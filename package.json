@@ -62,7 +62,7 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
-    "moment": "^2.19.1",
+    "moment": "^2.21.0",
     "xml2js": "^0.4.19"
   }
 }
