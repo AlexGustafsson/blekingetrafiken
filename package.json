@@ -1,6 +1,6 @@
 {
   "name": "blekingetrafiken",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "An API to retrieve public transport information, schedules and routes in Blekinge",
   "main": "index.js",
   "scripts": {
