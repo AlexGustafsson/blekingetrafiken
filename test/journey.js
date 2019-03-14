@@ -1,4 +1,4 @@
-const test = require('ava').test;
+import test from 'ava';
 
 const moment = require('moment');
 
@@ -259,7 +259,7 @@ test('Can fetch journeys', async t => {
 });
 
 test('Can\'t fetch journeys with faulty options', async t => {
-  const result = await t.throws(searchJourneys(null, null, {date: 'foo', time: 'bar'}));
+  const result = await t.throwsAsync(searchJourneys(null, null, {date: 'foo', time: 'bar'}));
   t.is(result.message, 'Invalid date or time given');
 });
 

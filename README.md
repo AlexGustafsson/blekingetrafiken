@@ -257,6 +257,9 @@ npm install
 Follow the conventions enforced:
 ```
 npm test
+npm run-script lint
+npm run-script coverage
+npm run-script check-duplicate-code
 ```
 
 ### Disclaimer

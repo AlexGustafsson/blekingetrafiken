@@ -1,4 +1,4 @@
-const test = require('ava').test;
+import test from 'ava';
 
 const {
   parseResult,
@@ -15,7 +15,7 @@ test('Disallows non-permitted API statuses', async t => {
     {content: {a: {b: {'Code': '500', 'Message': 'Error Message'}}}, expectedError: 'Unknown API endpoint error. Check your parameters and try again. Full error: 500: Error Message'}
   ];
 
-  const results = await Promise.all(testCases.map(x => t.throws(checkApiStatus(x.content))));
+  const results = await Promise.all(testCases.map(x => t.throwsAsync(checkApiStatus(x.content))));
 
   for (let i = 0; i < results.length; i++)
     t.is(results[i].message, testCases[i].expectedError);
@@ -24,7 +24,7 @@ test('Disallows non-permitted API statuses', async t => {
 test('Allows permitted API statuses', async t => {
   const passingCase = {content: {a: {b: {'Code': '0'}}}};
 
-  await t.notThrows(checkApiStatus(passingCase.content));
+  await t.notThrowsAsync(checkApiStatus(passingCase.content));
 });
 
 test('Can parse correct API responses', async t => {
@@ -43,7 +43,7 @@ test('Can parse correct API responses', async t => {
     return {string, content};
   }
 
-  const testCases = Array(25)
+  const testCases = new Array(25)
     .fill(0)
     .map(() => getTestCase(Math.random().toString(36).slice(2)));
 
@@ -55,12 +55,12 @@ test('Can parse correct API responses', async t => {
 });
 
 test('Can\'t parse faulty API responses', async t => {
-  const testCases = Array(25)
+  const testCases = new Array(25)
     .fill(0)
     .map(() => Math.random().toString(36).slice(2));
 
   await Promise.all(testCases.map(async x => {
-    const error = await t.throws(parseResult({data: x}));
+    const error = await t.throwsAsync(parseResult({data: x}));
 
     t.is(error.message, 'Could not parse API response');
   }));

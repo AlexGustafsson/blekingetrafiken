@@ -1,4 +1,4 @@
-const test = require('ava').test;
+import test from 'ava';
 
 const {
   fetchInfo,
@@ -7,7 +7,7 @@ const {
 } = require('../lib/info');
 
 test('Can format info', async t => {
-  const testCases = Array(25)
+  const testCases = new Array(25)
     .fill(0)
     .map(() => {
       return {

@@ -1,4 +1,4 @@
-const test = require('ava').test;
+import test from 'ava';
 
 const {
   searchPoints,
