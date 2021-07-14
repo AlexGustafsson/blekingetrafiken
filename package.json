@@ -23,7 +23,7 @@
     "api"
   ],
   "author": "Alex Gustafsson",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "ava": "^3.15.0",
     "esm": "^3.2.25",
